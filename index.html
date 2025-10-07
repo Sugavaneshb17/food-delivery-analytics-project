@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Delivery Analytics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>🍴 Food Delivery Analytics Dashboard</h1>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Total Orders</h3>
+        <p>{{ total_orders }}</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Revenue</h3>
+        <p>₹{{ total_revenue }}</p>
+      </div>
+    </div>
+
+    <h2>Top Selling Foods</h2>
+    <table>
+      <tr><th>Food</th><th>Total Sold</th></tr>
+      {% for row in top_foods %}
+      <tr><td>{{ row.food_name }}</td><td>{{ row.total_sold }}</td></tr>
+      {% endfor %}
+    </table>
+
+    <h2>Orders by City</h2>
+    <table>
+      <tr><th>City</th><th>Orders</th></tr>
+      {% for row in orders_by_city %}
+      <tr><td>{{ row.city }}</td><td>{{ row.orders_count }}</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+</html>
